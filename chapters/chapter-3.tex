@@ -1,0 +1,411 @@
+\chapter{Discrete Random Variables and Probability Distributions}
+
+\section{Random Variables}
+
+\begin{definition}
+    For a given sample space $\mathcal{S}$ of some experiment, a \textbf{random variable rv} is any rule that associates a number with each outcome in $\mathcal{S}$. In mathematical language, a random variable is a function whose domain si the sample space and whose range is the set of real numbers.
+\end{definition}
+
+\begin{definition}
+    Any random variable whose only possible values are 0 and 1 is called a \textbf{Bernoulli random variable}.
+\end{definition}
+
+\begin{definition}
+    A \textbf{discrete} random variable is an rv whose possible values either constitute a finite set or else can be listed in an inifinite sequence in which there is a first element, a second element, and so on.
+
+    A random variable is \textbf{continuous} if \textit{both} of the following apply:
+
+
+    \begin{enumerate}
+        \item Its set of possible values consists either of all numbers in a single interval on the number line(possibly inifinite in extent, e.g., from $-\infty$ to $\infty$) or all numbers in a disjoint union of such intervals(e.g., $[0, 10]\cup[20, 30]$).
+        \item No possible value of the variable has possitive probability, that is , $P(X=c) = 0$ for any possible value $c$.
+    \end{enumerate}
+\end{definition}
+
+\section{Probability Distributions for Discrete Random Variables}
+
+\begin{definition}
+    The \textbf{probability distribution} or \textbf{probability mass function}(pmf) of a discrete rv is defined for every number $x$ by $p(x) = P(X=x)=P({\rm all}\ s\in \mathcal{S}: X(s) = x)$.
+\end{definition}
+
+\begin{definition}
+    Suppose $p(x)$ depends on a quantity that can be assigned any one of a number of possible values, with each differnet value determining a different probability distribution. Such a quantity is called a \textbf{parameter} of the distribution. The collection of all probability distributions for different values of the parameter is called a \textbf{family} of probability distributions.
+\end{definition}
+
+\begin{definition}
+    The \textbf{cumulative distribution function}(cdf) $F(x)$ of a discrete rv $X$ with pmf $p(x)$ is defined for every number $x$ by
+
+    \begin{align*}
+        F(x) = P(X\leq x) = \sum\limits_{y:y\leq x}p(y)\\
+    \end{align*}
+
+    For any number $x$, $F(x)$ is the probability that the observed value of $X$ will be at most $x$.
+\end{definition}
+
+\begin{proposition}
+    For any two numbers $a$ and $b$ with $a\leq b$, 
+
+    \begin{align*}
+        P(a\leq X\leq b)=F(b) - F(a-)\\
+    \end{align*}
+
+    where $F(a-)$ represents the maximum of $F(x)$ values to the left of $a$. Equivalently, if $ a$ is the limit of values of $x$ approaching from the left, then $F(a-)$ is the limiting value of $F(x)$. In particular, if the only possible values are integers and if $a$ and $b$ are integers, then 
+
+    \begin{align*}
+        P(a\leq X\leq b) &=P(X=a\ {\rm or }\ a + 1\ {\rm or}\dots {\rm or}\ b)\\
+        &=F(b) - F(a - 1)\\
+    \end{align*}
+
+    Taking $a=b$ yields $P(X=a)=F(a) - F(a-1)$ in this case.
+\end{proposition}
+
+\section{Expected Values of Discrete Random Variables}
+
+\subsection{The Expected Value of $X$}
+
+\begin{definition}
+    Let $X$ be a discrete rv with set of possible values $D$ and pmf $p(x)$. The \textbf{expected value} or \textbf{mean value} of $X$, denoted by $E(X)$ or $\mu_X$, is
+
+    \begin{align*}
+        E(X) = \mu_X = \sum\limits_{x\in D} x\cdot p(x)\\
+    \end{align*}
+
+    This expected value will exist provided that $\sum_{x\in D}|x|\cdot p(x) < \infty$.
+\end{definition}
+
+\subsection{The Expected Value of a Function}
+
+\begin{proposition}
+    If the rv $X$ has a set of possible values $D$ and pmf $p(x)$, then the expected values of any function $h(X)$, denoted by $E[h(X)])$ of $\mu_{h(X)}$, is computed by
+    
+    \begin{align*}
+        E[H(X)] = \sum\limits_{D} h(x)\cdot p(x)\\
+    \end{align*}
+
+    assuming that $\sum_{D}|h(x)|\cdot p(x)$ is finite.
+\end{proposition}
+
+\begin{proposition}
+    \begin{align*}
+        E(aX + b) = a\cdot E(X) + b\\
+    \end{align*}
+
+    (Or, using alternative notation, $\mu_{aX+b} = a \cdot \mu_X + b$.)
+\end{proposition}
+
+\subsection{The Variance of X}
+
+\begin{definition}
+    Let $X$ have pmf $p(x)$ and expected value $\mu$. Then the \textbf{variance} of $X$, denoted by $V(X)$ or $\sigma_X^2$, or just $\sigma^2$, is
+
+    \begin{align*}
+        V(X) = \sum\limits_D (x-\mu) ^ 2 \cdot p(x) = E(X- \mu) ^ 2\\
+    \end{align*}
+
+    The \textbf{standard deviation}(SD) of $X$ is
+
+    \begin{align*}
+        \sigma_X = \sqrt{\sigma_X ^ 2}\\
+    \end{align*}
+\end{definition}
+
+\subsection{A Shortcut Formula for $\sigma^2$}
+
+\begin{proposition}
+    \begin{align*}
+        V(X) = \sigma^2 = \left[\sum\limits_D x^2\cdot p(x)\right] - \mu ^ 2 = E(X^2) - \left[E(X)\right] ^ 2\\
+    \end{align*}
+\end{proposition}
+
+\subsection{Rules of Variance}
+
+\begin{proposition}
+    \begin{align*}
+        V(aX + b) = \sigma_{aX+b} ^ 2 = a ^ 2 \cdot \sigma_X ^ 2\ and\ \sigma_{aX+b}=|a|\cdot\sigma_X\\
+    \end{align*}
+\end{proposition}
+
+\section{Moments and Moment Generating Functions}
+
+\begin{definition}
+    moments: the expected values of integer powers of $X$ and $X-\mu$.
+\end{definition}
+
+\begin{definition}
+    measure of departure of symmetry is called \textbf{skewness}, derived from third moment about the mean divided by $\sigma ^ 3$ to gain scale independence.
+
+    \begin{align*}
+        \frac{E\left[(X-\mu) ^ 3\right]}{\sigma ^ 3} = E\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]\\
+    \end{align*}
+
+    a distribution is negatively skewed if skewness is negative and is positively skewed otherwise.
+\end{definition}
+
+\begin{definition}
+    The \textbf{moment generating function}(mgf) of a discrete rv $X$ is defined to be
+
+    \begin{align*}
+        M_X(t) = E(e^{tX}) = \sum\limits_{x\in D}e^{tX}p(x)\\
+    \end{align*}
+
+    where D is the set of possible $X$ values. We will say that the moment generating function exists if $M_X(t)$ is defined for an interval of number sthat includes zeor as well as positive and negative values of $t$ (an interval including 0 in its interior).
+\end{definition}
+
+\begin{proposition}
+    If the mgf exists and is the same for two distributions, then the two distributions are the same. That is, the moment generating function uniquely specified the probability distribution; there is a one-to-one correspondence between distributions and mgf's.
+\end{proposition}
+
+\begin{theorem}
+    If the mgf exists,
+
+    \begin{align*}
+        E(X^r) = M_X^{(r)}(0)\\
+    \end{align*}
+
+    e.g., $M_X'(0) = E(X),\ M_X''(0) = E(X ^ 2)$
+\end{theorem}
+
+\begin{proposition}
+    Let $X$ have the mgf $M_X(t)$ and let $Y=aX+b$. Then $M_Y(t) = e^{bt}M_X(at)$.
+\end{proposition}
+
+\textbf{Example 3.34} on page 127 in textbook gives excellent illustation on how linear replacement works in real situations.
+
+\section{The Binomial Probability Distribution}
+
+\begin{definition}
+    An experiment for which Conditions 1-4 is satisfied is called \textbf{a binomial experiment}.
+
+    \begin{enumerate}
+        \item The experiment consists of a sequence of $n$ smaller experiments called \textit{trials}, where $n$ is fixed in advance of the experiment.
+        \item Each trial can result in one of the same two possible outcomes(dichotomous trials), which we denote by succes($S$) or failure($F$).
+        \item The trials are independent, so that the outcome on any particular trial does not influence the outcome on any other trial.
+        \item The probability of success is constant from trial to trial; we denote this probability by $p$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    Consider sampling without replacement from a dichotomous populatin of size $N$. If the sample size(number of trials) $n$ is at most 5\% of the population size, the experiment can be analyzed as though it were exactly a binomial experiment.
+\end{proposition}
+
+\subsection{The Binomial Random Variable and Distribution}
+
+\begin{definition}
+    Given a binomial experiment consisting of $n$ trials, the \textbf{binomial random variable $X$} accosiated with this experiment is defined as 
+
+    \begin{align*}
+        X = {\rm the\ number\ of\ } S{\rm 's\ among\ the\ }n{\rm\ trials} \\
+    \end{align*}
+\end{definition}
+
+\begin{notation}
+    We often write $X\sim Bin(n, p)$ to indicate that $X$ is a binomial rb based on $n$ trials with success probability $p$.
+
+    Bacause the pmf of a binomial rb $X$ depends on the two parameters $n$ and $p$, we denote the pmf by $b(x; n, p)$.
+\end{notation}
+
+\begin{theorem}
+    \begin{align*}
+        b(x; n, p) = 
+        \left\{\begin{array}{cl}
+            {n\choose x} (1 - p) ^ {n-x} & x = 0, 1, 2, \dots, n \\
+            0 & {\rm otherwise} \\
+        \end{array}\right.\\
+    \end{align*}
+\end{theorem}
+
+\subsection{Using Binomial Tables}
+
+\begin{notation}
+    For $X\sim Bin(n, p)$, the cdf will be denoted bu 
+
+    \begin{align*}
+        P(X\leq x) = B(x;n,p) = \sum\limits_{y=0}^x b(y;n,p) \quad x=0,1,\dots,n \\
+    \end{align*}
+\end{notation}
+
+\subsection{The Mean and Varaince of $X$}
+
+\begin{proposition}
+    If $X\sim Bin(n,p)$, then $E(X) = np$, $V(X) = np(1-p) = npq$, and $\sigma_X = \sqrt{npq}$(where $q= 1- p$).
+\end{proposition}
+
+\subsection{The Moment Gnerating Function of $X$}
+
+\noindent\rule{\textwidth}{1pt}
+
+Obtain mean and variance of binomial rv $X$.
+
+\begin{proof}
+    \begin{align*}
+        M_X(t) & = E(e^{tX}) = \sum\limits_{x\in D} e^{tx} p(x) = \sum\limits_{x=0}^n e^{tx}{n\choose x} p^x (1-p)^{n-x} \\
+        & = \sum\limits_{x=0}^n {n\choose x}(pe^t)^x(1-p)^{n-x} = (pe^t + 1 - p) ^ n \\
+    \end{align*}
+
+    Differentiate $M_X(t)$,
+
+    \begin{align*}
+        M'_X(t) = n(pe^t + 1 - p)pe^t \\
+    \end{align*}
+    \begin{align*}
+        \mu = M'_X(0) = np \\
+    \end{align*}
+    \begin{align*}
+        M''_X(t) = n(n - 1)(pe^t + 1 - p) ^{n-2} pe^tpe^t + n(pe^t + 1 - p)^{n - 1}pe^t \\
+    \end{align*}
+    \begin{align*}
+        E(X^2) = M_X''(0) = n(n - 1)p^2 + np \\
+    \end{align*}
+    \begin{align*}
+        \sigma^2 & = V(X) = E(X^2) - [E(X)]^2 \\
+        & = n(n - 1)p^2 + np - n^2p^2 = np - np^2 = np(1 - p) \\
+    \end{align*}
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+
+\section{Hypergeometric and Negative Binomial Distributions}
+
+\subsection{The Hypergeometric Distribution}
+
+\begin{proposition}
+    If $X$ is the number of $S$'s in a completely random sample of size $n$ drawn from a populatin consisting of $M$ $S$'s and $(N-M)$ $F$'s, then  the probability distribution of $X$, called the \textbf{hypergeometric distribution}, is given by 
+    
+    \begin{align*}
+        P(X = x) = h(x;n, M, N) = \frac{{M\choose x}{N-M\choose n-x}}{{N\choose n}} \\
+    \end{align*}
+
+    for $x$ an integer satisfying ${\rm max}(0, n - N + M)\leq x \leq {\rm min}(n, M)$.
+\end{proposition}
+
+\begin{proposition}
+    The mean and variance of the hypergeometric rv $X$ having pmf $h(x;n,M,N)$ are 
+
+    \begin{align*}
+        E(X) = n\cdot\frac{M}{N}\quad V(X) = \left(\frac{N-n}{N-1}\right)\cdot n\cdot\frac{M}{N}\left(1-\frac{M}{N}\right)\\
+    \end{align*}
+
+    \textbf{Finite populatin correction factor} $\frac{N-n}{N-1}$ is the difference of $V(X)$ of binomial rv and hypergeometric rv, thus hypergeometric rv has smaller variance than binomial rv.
+\end{proposition}
+
+\begin{theorem}{RULE OF THUMB}
+    Let the population size , $N$, and number of population $S$'s, $M$, get large with the ratio $M/N$ approaching $p$. Then $h(x;n,M,N)$ approaches $b(x;n,p)$; so for $n/N$ small, the two are approximately equal provided that $p$ is not too near either 0 or 1. 
+\end{theorem}
+
+\subsection{The Negative Binomial Distribution}
+
+\begin{proposition}
+    \textbf{Negative binomial distribution} is based on the following Rules
+
+    \begin{enumerate}
+        \item The experiment consists of a sequence of independent trials.
+        \item Each trial can result in either a success($S$) or a failure($F$).
+        \item The probability of success is constant from trial to trial, so $P$($S$ bon trial $i$) = $p$ for $i = 1, 2, \dots$.
+        \item The experiment continuess(trials are performed) until a total of $r$ successes has been observed, where $r$ is a specified positive integer.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    The pmf of the negative binomial rv $X$ with parameters $r$ = numbers of $S$'s and $p = P(S)$ is
+    
+    \begin{align*}
+        nb(x;r,p) = {x+r-1\choose r-1} p^r(1-p)^x\quad x=0,1,2,\dots \\
+    \end{align*}
+
+    $x$ denotes the number of failures that precede the $r$th success.
+\end{proposition}
+
+\begin{proposition}
+    If $X$ is a negative binomial rv with pmf $nb(x;r,p)$, then
+    
+    \begin{align*}
+        M_x(t) = \frac{p^r}{[1-e^t(1-p)]^r}\quad E(X) = \frac{r(1-p)}{p}\quad V(X) = \frac{r(1-p)}{p^2} \\
+    \end{align*}
+\end{proposition}
+
+\textbf{PROOF NOT ATTACHED}
+
+\section{The Poisson Probability Distribution}
+
+\begin{definition}
+    A random varaible $X$ is said to have a \textbf{Poison distribution} with parameter $\lambda(\lambda > 0)$ if the pmf of $X$ is
+
+    \begin{align*}
+        p(x;\lambda) = \frac{e^{-\lambda}\lambda^x}{x!}\quad x=0,1,2,\dots \\
+    \end{align*}
+\end{definition}
+
+\subsection{The Poisson Distribution as a Limit}
+
+\begin{proposition}
+    Suppose that in the binomial pmf b(x;n,p) we let $n\rightarrow\infty$ and $p\rightarrow 0$ in such a way that $np$ approaches a value $\lambda>0$. Then $b(x;n,p)\rightarrow p(x;\lambda)$.
+\end{proposition}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{proof}
+    \begin{align*}
+        b(x;n,p) & = {n\choose x} p^x (1-p)^{n-x} = \frac{n!}{x!(n-x)!} p^x (1-p)^{n-x} \\
+        & = \frac{n\cdot (n-1) \cdot \cdots \cdot (n-x+1)}{x!} p^x (1-p)^{n-x}\\
+        & = \frac{n}{n} \frac{n-1}{n}\cdots \frac{n-x+1}{n}\cdot\frac{(np)^x}{x!}\cdot\frac{(1-p)^n}{(1-p)^x} \\
+    \end{align*}
+    
+    \begin{align*}
+        \lim\limits_{n\rightarrow\infty}b(x;n,p) = 1\cdot 1 \cdot \cdots \cdot 1 \cdot \frac{\lambda^x}{x!}\cdot\left(\lim\limits_{n\rightarrow\infty}\frac{(1-np/n)^n}{1}\right) \\
+    \end{align*}
+    
+    \begin{align*}
+        & \because np\rightarrow\lambda, \lim\limits_{a_n\rightarrow a}\left(1-\frac{a_n}{n}\right)^n=e^{-a}, \\
+        & \therefore \lim\limits_{n\rightarrow\infty}b(x;n,p) = \frac{\lambda^x}{x!}\cdot\lim\limits_{n\rightarrow\infty}\left(1-\frac{np}{n}\right)^n = \frac{\lambda^xe^{-\lambda}}{x!} = p(x;\lambda) \\
+    \end{align*}
+\end{proof}
+
+\begin{theorem}{RULE OF THUMB}
+    In any binomial experiment for which $n$ is large and $p$ is small, $b(x;n,p)\approx p(x;\lambda)$ where $\lambda = np$. Safe for \textbf{$n > 50$ and $np < 5$}.
+\end{theorem}
+
+\noindent\rule{\textwidth}{1pt}
+
+\subsection{The Mean, Variance and MGF of $X$}
+
+\begin{proposition}
+    If $X$ has a Poisson distribution with parameter $\lambda$, then $E(X) = V(X) = \lambda$.
+\end{proposition}
+
+\begin{proposition}
+    The Poisson moment generating function is 
+
+    \begin{align*}
+        M_X(t) = e^{\lambda(e^t-1)}
+    \end{align*}
+\end{proposition}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{proof}
+    \begin{align*}
+        & M_X(t) = E(e^{tx}) = \sum\limits_{x=0}^\infty e^{tx}e^{-\lambda}\frac{\lambda^x}{x!} = e^{-\lambda} \sum\limits_{x=0}^\infty\frac{(\lambda e^t)^x}{x!} \\
+        & \because \sum\limits_{x=0}^\infty \frac{u^x}{x!} = e^u, \\
+        & \therefore M_X(t) = e^{-\lambda}e^{\lambda e^t} = e^{\lambda e^t - \lambda} \\
+    \end{align*}
+\end{proof}
+
+\noindent\rule{\textwidth}{1pt}
+
+\subsection{The Poisson Process}
+
+\begin{proposition}
+    A \textbf{Poisson Process} is based on the following situations:
+
+    \begin{enumerate}
+        \item There exists a parameter $\alpha  > 0$ such that for any short time interval of length $\Delta t$, the probability that the event occurs once is $\alpha \cdot \Delta t + o(\Delta t)$.
+        \item The probability of event occurring more than once during $\Delta t$ is $o(\Delta t)$[which, along with Assumption 1, implies that the probability of no event occurs during $\Delta t$ is $1-\alpha\cdot\Delta t - o(\Delta t)$].
+        \item The number of pulses received during the time interval $\Delta t$ is independent of the number received prior to this time interval.
+    \end{enumerate}
+
+    Let $P_K(t)$ denote the probability that event occurs $k$ times during any particular time interval of length $t$.
+
+    $P_K(t) = \frac{e^{-\alpha t}(\alpha t)^k}{k!}$, implies that the times of event occurring in a time interval of length $t$ is a Poisson rv with $\lambda = \alpha t$. 
+    
+    The expected occurring time during a unit time interval is $\alpha$.
+\end{proposition}

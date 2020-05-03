@@ -1,0 +1,40 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color, soul}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{lastpage}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usemintedstyle{pastie}
+\usepackage[title]{appendix}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\renewcommand{\appendix}[1]{
+	\newpage
+	\begin{appendices}
+		\section{#1}
+\end{appendices}}
+
+\newcommand{\authorName}{季林成}
+\newcommand{\titleName}{Assignment 5 for Artificial Technology}
+
+\lhead{\authorName}
+\chead{\titleName}
+\rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\author{\authorName}
+\title{\titleName}
+\date{\today}
+
+
+\begin{document}
+	\maketitle
+	\pagestyle{fancy}
+	\thispagestyle{empty}
+		
+\end{document}

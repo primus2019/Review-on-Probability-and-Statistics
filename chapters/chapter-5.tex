@@ -1,0 +1,296 @@
+\chapter{Joint Probability Distributions}
+
+\section{Jointly Distributed Random Variables}
+
+\subsection{The Joint Probability Mass Function for Two Discrete Random Variable}
+
+\begin{definition}
+    Let $X$ and $Y$ be two discrete rv's defined on the sample space $\mathcal{S}$ of an experiment. The \textbf{joint probability mass function} $p(x,y)$ is defined for each pair of numbers $(x,y)$ by
+
+    \begin{align*}
+        p(x,y) = P(X=x\text{ and }Y=y) \\
+    \end{align*}
+
+    Let $A$ be any set consisting of pairs of $(x,y)$ values. Then the probability that the random pair $(X,Y)$ lies in $A$ is obtained by summing the joint pmf over pairs in $A$:
+
+    \begin{align*}
+        P[(X,Y)\in A] = \sum_{(x,y)\in A}\sum p(x,y) \\
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    The \textbf{marginal mass function} of $X$ and of $Y$, denoted by $p_X(x)$ and $p_Y(y)$, respectively, are given by 
+
+    \begin{align*}
+        p_X(x) = \sum_y p(x,y) \quad p_Y(y) = \sum_x p(x,y) \\
+    \end{align*}
+\end{definition}
+
+\subsection{The Joint Probability Density Function for Two Continuous Random Variables}
+
+\begin{definition}
+    Let $X$ and $Y$ be continuous rv's. Then $f(x,y)$ is the \textbf{joint probability density function} for $X$ and $Y$ if for any two-dimensional $A$ 
+    
+    \begin{align*}
+        P[(X,Y)\in A] = \int_A\int f(x,y)dx\ dy \\
+    \end{align*}
+    
+    In particular, if $A$ is the two-dimensional rectangle $\{(x,y):a\leq x\leq b,c\leq y\leq d\}$, then 
+    
+    \begin{align*}
+        P[(X,Y)\in A] = P(a\leq X\leq b, c\leq Y\leq d) = \int_a^b\int_c^d f(x,y)dx dy \\
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    The \textbf{marginal probability density function} of $X$ and $Y$, denoted by $f_X(x)$ and $f_Y(y)$, respectively, are given by 
+
+    \begin{align*}
+        f_X(x) = \int_{-\infty}^\infty f(x,y)dy \quad \text{for } -\infty<x<\infty \\
+        f_Y(y) = \int_{-\infty}^\infty f(x,y)dx \quad \text{for } -\infty<y<\infty \\
+    \end{align*}
+\end{definition}
+
+\subsection{Independent Random Variable}
+
+\begin{definition}
+    Two random variable $X$ and $Y$ are said to be \textbf{independent} if for every pair of $x$ and $y$ values, 
+    
+    \begin{align*}
+        p(x,y) = p_X(x)\cdot p_Y(y) \quad \text{when }X\text{ and }Y\text{ are discrete} \\
+    \end{align*}
+    
+    or
+
+    \begin{align*}
+        f(x,y) = f_X(x)\cdot f_Y(y)\quad \text{when }X\text{ and }Y\text{ are discrete} \\
+    \end{align*}
+
+    $X$ and $Y$ are said to be \textbf{dependent} if either of these are not satisfied.
+
+    Independence of two rv's is more useful when the description of the experiment under study tells us that $X$ and $Y$ have no effect on each other. Then once the marginal pmf's or pdf's have been specified, the joint pmf or pdf is simply the product of the two marginal functions. It follows that 
+
+    \begin{align*}
+        P(a\leq X\leq b, c\leq Y\leq d) = P(a\leq X\leq b)\cdot P(c\leq Y\leq d) \\
+    \end{align*}
+\end{definition}
+
+\subsection{More than Two Random Variables}
+
+\begin{definition}
+    If $X_1, X_2,\dots,X_n$ are all discrete random variables, the \textbf{joint pmf} of the variables is the function 
+
+    \begin{align*}
+        p(x_1,x_2,\dots,x_n) = P(X_1=x_1, X_2=x_2,\dots,X_n=x_n) \\
+    \end{align*}
+
+    If the variables are continuous, the \textbf{joint pdf} if $X_1,X_2,\dots,X_n$ is the function $f(x_1,x_2,\dots,x_n)$ such that for any $n$ intervals $[a_1,b_1],\dots,[a_n,b_n]$, 
+
+    \begin{align*}
+        P(a_1\leq X_1\leq b_1,\dots,a_n\leq X_n\leq b_n) = \int_{a_1}^{b_1}\dots\int_{a_n}^{b_n} f(x_1,\dots,x_n) dx_n\dots d_1 \\
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    Joint pmf of multinomial rv based on $n$ independent and identical trials is 
+    
+    \begin{align*}
+        & p(x_1,\dots,x_r) \\
+        & \quad = \left\{\begin{array}{cl}
+            \frac{n!}{(x_1!)(x_2!)\cdot\cdots\cdot(x_r!)} p_1^{x_1}\cdot\cdots\cdot p_r^{x_r} & x_i = 0,1,2,\dots, \text{ with }x_1+\dots+x_r = n \\
+            0 & \text{otherwise} \\
+        \end{array}\right.
+    \end{align*}
+
+    where $x_i$ denotes the number of successes to be $i$.
+\end{proposition}
+
+\begin{definition}
+    The rv $X_1,X_2,\dots,X_n$ are said to be \textbf{independent} if for \textit{every} subset $X_{i_1},X_{i_2},\dots,X_{i_k}$ of the variables(each pair, each triple and so on), the joint pmf or pdf is equal to the product of the marginal pmf's or pdf's.
+\end{definition}
+
+\section{Expected Values, Cvariance, and Correlation}
+
+\begin{proposition}
+    Let $X$ and $Y$ be jointly distributed rv's with pmf $p(x,y)$ or pdf $f(x,y)$ according to whether the variables are discrete or continuous. Then the expected value of a function $h(X,Y)$, denoted by $E[h(X,Y)]$ or $\mu_{h(X,Y)}$ is given by 
+
+    \begin{align*}
+        E[h(X,Y)] = \left\{\begin{array}{cl}
+            \sum_x\sum_y h(x,y)\cdot p(x,y) & \text{if }X\text{ and }Y\text{ are discrete} \\
+            \int_{-\infty}^\infty \int_{-\infty}^\infty h(x,y)\cdot f(x,y) dx\ dy & \text{if }X\text{ and }Y\text{ are continuous} \\
+        \end{array}\right.
+    \end{align*}
+
+    Let $X$ and $Y$ be continuous independent rv's and suppose $h(X,Y) = XY$, then 
+    
+    \begin{align*}
+        E(XY) & = \int_{-\infty}^\infty\int_{-\infty}^\infty xyf(x,y)dx\ dy = \int_{-\infty}^\infty\int_{-\infty}^\infty xyf_X(x)f_Y(y) dx\ dy \\
+        & = \int_{-\infty}^\infty yf_Y(y)\left[\int_{-\infty}^\infty xf_X(x)dx\right]dy = E(X)E(Y) \\
+    \end{align*}
+\end{proposition}
+
+\subsection{Convariance}
+
+\begin{definition}
+    The \textbf{convariance } between two rv's $X$ and $Y$ is 
+
+    \begin{align*}
+        \text{Cov}(X,y) & = E[(X-\mu_X)(Y-\mu_Y)] \\
+        & = \left\{\begin{array}{cl}
+            \sum_X\sum_Y(x-\mu_X)(y-\mu_Y)p(x,y) & \text{if }X\text{ and }Y\text{ are discrete} \\
+            \int_{-\infty}^\infty \int_{-\infty}^\infty (x-\mu_X)(y-\mu_Y)dx\ dy & \text{if }X\text{ and }Y\text{ are continuous} \\
+        \end{array}\right.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    \begin{align*}
+        \text{Cov}(X,Y) = E(XY) - \mu_X\cdot \mu_Y \\
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}
+    If $X$, $Y$, and $Z$ are rv's and $a$ and $b$ are constants then 
+
+    \begin{align*}
+        \text{Cov}(aX+bY,Z) = a\text{Cov}(X,Z) + b\text{Cov}(Y,Z) \\
+    \end{align*}
+\end{proposition}
+
+\subsection{Correlation}
+
+\begin{definition}
+    The \textbf{correlation coefficient} of $X$ and $Y$, denoted by Corr$(X,y)$, or $\rho_{X,Y}$, or just $\rho$, is defined by 
+
+    \begin{align*}
+        \rho_{X,Y} = \frac{\text{Cov(X,Y)}}{\sigma_X\cdot\sigma_Y} \\
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    \begin{enumerate}
+        \item If $X$ and $Y$ are independent, then $\rho=0$, but $\rho=0$ does not imply independence. 
+        \item $\rho=1$ or -1 iff $Y=aX+b$ for some numbers $a$ and $b$ with $a\neq 0$.
+    \end{enumerate}
+\end{proposition}
+
+\section{Conditional Distributions}
+
+\begin{definition}
+    Let $X$ and $Y$ be two discrete rv's with joint pmf $p(x,y)$ and marginal X pmf $p_X(x)$. Then for any $x$ value such that $p_X(x) > 0$, the \textbf{conditional probability mass function of} $Y$ given $X = x$ is 
+    
+    \begin{align*}
+        p_{Y|X}(y|x) = \frac{p(x,y)}{p_X(x)} \\
+    \end{align*}
+
+    Let $X$ and $Y$ be two continuous rv's with joint pdf $f(x,y)$ and marginal $X$ pdf $f_X(x)$. Then for any $x$ value such that $f_X(x) > 0$, the \textbf{conditional probability density function of} $Y$ given $X=x$ is 
+    
+    \begin{align*}
+        f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} \\
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    Let $X$ and $Y$ be two discrete rv's with conditional pmf $p_{Y|X}(y|x)$. Then the \textbf{conditional mean} or \textbf{expected value of} $Y$ \textbf{given that} $X=x$ is 
+
+    \begin{align*}
+        \mu_{Y|X=x} = E(Y|X=x) = \sum_{y\in D_Y} y\ p_{Y|X}(y|x) \\
+    \end{align*}
+
+    also, for any function $g(y)$, 
+
+    \begin{align*}
+        E(g(Y)|X=x) = \sum_{y\in D_Y} g(y)p_{Y|X}(y|x) \\
+    \end{align*}
+
+    Let $X$ and $Y$ be two continuous rv's with conditional pdf $f_{Y|X}(y|x)$. Then 
+    
+    \begin{align*}
+        \mu_{Y|X=x} = E(Y|X=x) = \int_{-\infty}^\infty yf_{Y|X}(y|x) dy \\
+    \end{align*}
+
+    also, for any function $g(y)$, 
+
+    \begin{align*}
+        E(g(Y)|X=x) = \int_{-\infty}^\infty g(y)f_{Y|X}(y|x) dy \\
+    \end{align*}
+
+    The \textbf{conditional variance of} $Y$ \textbf{given} $X=x$ is 
+
+    \begin{align*}
+        \sigma_{Y|X=x}^2 = V(Y|X=x) & = E\left\{[Y-E(Y|X=x)]^2|X=x\right\} \\
+        & = E(Y^2|X=x) - \mu_{Y|X=x}^2 \\
+    \end{align*}
+\end{definition}
+
+\subsection{Independence}
+
+\begin{proposition}
+    Let $X$ and $Y$ be two rv's, $X$ and $Y$ are \textbf{independent} if 
+
+    \begin{align*}
+        p_{Y|X}(y|x) = p_Y(y) \quad \text{or} \quad p(x,y) = p_X(x)\cdot p_Y(y) \\
+    \end{align*}
+\end{proposition}
+
+\subsection{The Bivariate Normal Distribution}
+
+\begin{definition}
+    Let $X$ and $Y$ be two rv's which have a bivariate normal joint distribution: 
+
+    \begin{align*}
+        f(x,y) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{[(x-\mu_1)/\sigma_1]^2 + [(y-\mu_2)/\sigma_2]^2 - 2\rho(x-\mu_1)(y-\mu_2)/(\sigma_1\sigma_2)}{2(1-\rho^2)}} \\
+    \end{align*}
+
+    and we have marginal distribution: 
+
+    \begin{align*}
+        f_X(x) = \frac{1}{\sigma_1\sqrt{2\pi}}e^{-\frac{[(x-\mu_1)/\sigma_1]^2}{2}} \\
+    \end{align*}
+
+    and conditional mean and conditional variance: 
+
+    \begin{align*}
+        \mu_{Y|X=x} = E(Y|X=x) = \mu_2 + \rho\sigma_2\frac{x-\mu_1}{\sigma_1} \\
+    \end{align*}
+
+    \begin{align*}
+        \sigma_{Y|X=x}^2 = V(Y|X=x) = \sigma_2^2(1-\rho^2) \\
+    \end{align*}
+\end{definition}
+
+\subsection{Regression to the Mean}
+
+From the equation 
+
+\begin{align*}
+    \frac{\mu_{Y|X=x} - \mu_2}{\sigma_2} = \rho\cdot\frac{x-\mu_1}{\sigma_1} \\
+\end{align*}
+
+we can conclude that the correlation coefficient $\rho$ is the factor between standardized conditional mean of $Y$ and standardized $X$. 
+
+\subsection{The Mean and Variance Via the Conditional Mean and Variance}
+
+\begin{theorem}
+    ~\\
+    \begin{enumerate}[label=\textbf{\alph*.}]
+        \item $E(Y) = E[E(Y|X)]$
+        \item $V(Y) = V[E(Y|X)] + E[V(Y|X)]$
+    \end{enumerate}
+
+    These implies that $E(Y)$ is a weighted average of the conditional means $E(Y|X=x)$, where the weights are given by the pmf of $X$. 
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        E(Y) = E[E(Y|X)] \\
+    \end{align*}
+
+    \begin{align*}
+        E[E(Y|X)] & = \sum_{x\in D_x} E(Y|X=x)p_X(x) = \sum_{x\in D_X}\sum_{y\in D_Y} y p_{Y|X}(y|x)p_X(x) \\
+        & = \sum_{x\in D_x}\sum_{y\in D_Y} y \frac{p(x,y)}{p_X(x)} p_X(x) = \sum_{y\in D_Y} y \sum_{x\in D_X} p(x,y) = \sum_{y\in D_Y} yp_Y(y) = E(Y) \\
+    \end{align*}
+\end{proof}
+
+\section{Transformations of Random Variables}
+

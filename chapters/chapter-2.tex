@@ -1,0 +1,100 @@
+\chapter{Probability}
+
+\section{Sample Spaces and Events}
+
+\subsection{Facts and Concepts}
+
+\begin{description}
+	\item[probability] randomness and uncertainty
+	\item[experiment] any action or process whose outcome is subject to uncertainty
+	\item[sample space $\mathcal{S}$] the set of all possible outcomes of that experiment
+	\item[event] any collection(subset) of outcomes contained in the sample space $\mathcal{S}$\\
+	\rule{\linewidth}{1pt}
+	\par An \textbf{event} is said to be \textbf{simple} if it consists of exactly one outcome and \textbf{compound} if it consists of more than one outcome.\\
+	\rule{\linewidth}{1pt}
+	\item[union $A\cup B$] the event consisting of all outcomes that are either in $A$ or in $B$ or in both events
+	\item[intersection $A\cap B$] the event consisting of all outcomes that are in both $A$ and $B$
+	\item[complement $A'$] the set of all outcomes in $\mathcal{S}$ tha are not contained in $A$
+	\item[disjoint, mutually exclusive $A\cap B = \varnothing$] the relationship of having no outcomes in common
+\end{description}
+
+\section{Axioms, Interpretations, and Properties of Probability}
+
+
+\begin{axiom}
+	For any event $A$, $P(A)\geq 0$
+\end{axiom}
+\begin{axiom}
+	$P(\mathcal{S})=1$
+\end{axiom}
+\begin{axiom}
+	If $A_1, A_2, A_3, \dots$ is an infinite collection of disjoint events, then
+	$$ P(A_1\cup A_2 \cup A_3 \cup \cdots) = \sum\limits_{i = 1} ^ {\infty}P(A_i)$$
+\end{axiom}
+
+\begin{proposition}
+	$P(\varnothing)=0$ where $\varnothing$ is the null event. This in turn implies that the property contained in Axiom 3 is valid for a \textit{finite} collection of events.
+\end{proposition}
+
+\begin{proposition}
+	For any event $A$, $P(A) = 1 - P(A')$
+\end{proposition}
+
+\begin{proposition}
+	For any event $A$, $P(A) \leq 1$
+\end{proposition}
+
+\begin{proposition}
+	For any evnets $A$ and $B$, 
+	$$ P(A\cup B) = P (A) + P (B) - P (A\cap B) $$
+\end{proposition}
+
+\section{Counting Techniques}
+
+\begin{definition}
+	Any ordered sequence of k objects taken from aset of $n$ distinct objects is called a permutation of size $k$ of the objects. The number of permutations of size $k$ that can be constructed from the $n$ objects is denoted by $P_{k, n}$.
+	$$ P_{k, n} = n (n - 1) (n - 2) \cdot \cdots \cdot (n - k + 2) (n - k + 1)$$
+\end{definition}
+
+\begin{definition}
+	For any positive integer $m$, $m!$ is read "$m$ factorial" and is defined by $m! = m(m - 1)\cdot\cdots\cdot(2)(1)$. Also, $0! = 1$.
+\end{definition}
+
+\begin{definition}
+	Given a set of $n$ distinct objects, any unordered subset of size $k$ of the objects is called a \textbf{combination}. The number of combinations of size $k$ that can be formed from $n$ distinct objects will be denoted by $\left(_k^n\right)$.(This notation is more common in probability than $C_{k, n}$ which would be analogous to notation for permutations.)
+\end{definition}
+
+\section{Conditional Probability}
+
+\begin{definition}
+	For any two events $A$ and $B$ with $P(B) > 0$, the \textbf{conditional probability of $A$ given that $B$ has occurred} is defined by
+	$$ P(A | B)  = \frac{P(A \cap B)}{P(B)}$$.
+\end{definition}
+
+\begin{theorem}[THE MULTIPLICATION RULE]
+	$P(A \cap B) = P(A | B) \cdot P(B)$
+\end{theorem}
+
+\begin{theorem}[THE LAW OF TOTAL PROBABILITY]
+	Let $A_1, A_2, \dots, A_k$ be mutually exclusive and exhaustive events. Then for any other event B,
+	\begin{align*}
+		P(B) &= P(B|A_1)\cdot P(A_1) + \cdots + P(B|A_k)\cdot P(A_k)\\
+		&=\sum\limits_{i = 1} ^ k P(B|A_i)P(A_i)\\
+	\end{align*}
+\end{theorem}
+
+\begin{theorem}[BAYERS' THEOREM]
+	Let $A_1, \dots, A_k$ be a collection of mutually exclusive and exhaustive events with $ P(A_i) > 0$ for $i = 1,\dots,k$. Then for any other event $B$, for which $P(B) > 0$
+	$$ P(A_j|B) = \frac{P(A_j\cap B)}{P(B)} = \frac{P(B|A_j)P(A_j)}{\sum\limits_{i = 1}^kP(B|A_i)P(A_i)}\quad j = 1,\dots,k$$
+\end{theorem}
+
+\section{Independence}
+
+\begin{definition}
+	Two events $A$ and $B$ are \textbf{independent} if $P(A|B) = P(A)$ and are \textbf{dependent} otherwise.
+\end{definition}
+
+\begin{proposition}
+	$A$ and $B$ are independent if and only If
+	$$ P(A\cap B) = P(A|B) \cdot P(B) = P(A) \cdot P(B)$$
+\end{proposition}

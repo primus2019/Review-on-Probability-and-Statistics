@@ -1,0 +1,54 @@
+\ProvidesPackage{overview}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color, soul}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{lastpage}
+\usepackage[utf8]{inputenc}
+%\usepackage{minted}
+%\usemintedstyle{pastie}
+\usepackage[title]{appendix}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{svg}
+
+\renewcommand{\appendix}[1]{
+	\newpage
+	\begin{appendices}
+		\section{#1}
+\end{appendices}}
+
+\newcommand{\authorName}{Primus Ji}
+\newcommand{\titleName}{Review on Probability and Statistics}
+
+\lhead{\authorName}
+\chead{\titleName}
+\rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\author{\authorName}
+\title{\titleName}
+\date{\today}
+
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
+\theoremstyle{definition}
+\newtheorem{axiom}{AXIOM}[section]
+\newtheorem{proposition}{PROPOSITION}[section]
+\newtheorem{definition}{DEFINITION}[section]
+\newtheorem{theorem}{THEOREM}[section]
+\newtheorem{notation}{NOTATION}[section]
+
+\pagecolor[RGB]{39, 40, 34}
+\color{white}
+% \pagecolor[RGB]{250, 249, 222}
+% \pagecolor[RGB]{234, 234, 239}
+% \pagecolor[RGB]{199,237,204}
+
+\everymath{\displaystyle}
