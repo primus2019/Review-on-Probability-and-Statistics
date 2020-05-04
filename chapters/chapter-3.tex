@@ -206,11 +206,10 @@
 
 \begin{theorem}
     \begin{align*}
-        b(x; n, p) = 
-        \left\{\begin{array}{cl}
-            {n\choose x} (1 - p) ^ {n-x} & x = 0, 1, 2, \dots, n \\
+        b(x; n, p) = \left\{\begin{array}{cl}
+            \binom{n}{x} (1 - p) ^ {n-x} & x = 0, 1, 2, \dots, n \\
             0 & {\rm otherwise} \\
-        \end{array}\right.\\
+        \end{array}\right.
     \end{align*}
 \end{theorem}
 
@@ -238,8 +237,8 @@ Obtain mean and variance of binomial rv $X$.
 
 \begin{proof}
     \begin{align*}
-        M_X(t) & = E(e^{tX}) = \sum\limits_{x\in D} e^{tx} p(x) = \sum\limits_{x=0}^n e^{tx}{n\choose x} p^x (1-p)^{n-x} \\
-        & = \sum\limits_{x=0}^n {n\choose x}(pe^t)^x(1-p)^{n-x} = (pe^t + 1 - p) ^ n \\
+        M_X(t) & = E(e^{tX}) = \sum\limits_{x\in D} e^{tx} p(x) = \sum\limits_{x=0}^n e^{tx}\binom{n}{x} p^x (1-p)^{n-x} \\
+        & = \sum\limits_{x=0}^n \binom{n}{x}(pe^t)^x(1-p)^{n-x} = (pe^t + 1 - p) ^ n \\
     \end{align*}
 
     Differentiate $M_X(t)$,
@@ -272,13 +271,14 @@ Obtain mean and variance of binomial rv $X$.
     If $X$ is the number of $S$'s in a completely random sample of size $n$ drawn from a populatin consisting of $M$ $S$'s and $(N-M)$ $F$'s, then  the probability distribution of $X$, called the \textbf{hypergeometric distribution}, is given by 
     
     \begin{align*}
-        P(X = x) = h(x;n, M, N) = \frac{{M\choose x}{N-M\choose n-x}}{{N\choose n}} \\
+        P(X = x) = h(x;n, M, N) = \frac{\binom{M}{x}\binom{N-M}{n-x}}{\binom{N}{n}} \\
     \end{align*}
 
     for $x$ an integer satisfying ${\rm max}(0, n - N + M)\leq x \leq {\rm min}(n, M)$.
 \end{proposition}
 
 \begin{proposition}
+    ~\\
     The mean and variance of the hypergeometric rv $X$ having pmf $h(x;n,M,N)$ are 
 
     \begin{align*}
@@ -309,7 +309,7 @@ Obtain mean and variance of binomial rv $X$.
     The pmf of the negative binomial rv $X$ with parameters $r$ = numbers of $S$'s and $p = P(S)$ is
     
     \begin{align*}
-        nb(x;r,p) = {x+r-1\choose r-1} p^r(1-p)^x\quad x=0,1,2,\dots \\
+        nb(x;r,p) = \binom{x+r-1}{r-1} p^r(1-p)^x\quad x=0,1,2,\dots \\
     \end{align*}
 
     $x$ denotes the number of failures that precede the $r$th success.
@@ -345,7 +345,7 @@ Obtain mean and variance of binomial rv $X$.
 
 \begin{proof}
     \begin{align*}
-        b(x;n,p) & = {n\choose x} p^x (1-p)^{n-x} = \frac{n!}{x!(n-x)!} p^x (1-p)^{n-x} \\
+        b(x;n,p) & = \binom{n}{x} p^x (1-p)^{n-x} = \frac{n!}{x!(n-x)!} p^x (1-p)^{n-x} \\
         & = \frac{n\cdot (n-1) \cdot \cdots \cdot (n-x+1)}{x!} p^x (1-p)^{n-x}\\
         & = \frac{n}{n} \frac{n-1}{n}\cdots \frac{n-x+1}{n}\cdot\frac{(np)^x}{x!}\cdot\frac{(1-p)^n}{(1-p)^x} \\
     \end{align*}

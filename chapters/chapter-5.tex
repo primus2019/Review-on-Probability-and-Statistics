@@ -294,3 +294,103 @@ we can conclude that the correlation coefficient $\rho$ is the factor between st
 
 \section{Transformations of Random Variables}
 
+\subsection{The Joint Distribution of Two New Random Variables}
+
+\begin{theorem}
+    \begin{align*}
+        \det(M) = \left|\frac{\partial(x_1,x_2)}{\partial(y_1,y_2)}\right| \\
+    \end{align*}
+
+    \begin{align*}
+        g(y_1,y_2) = f(x_1,x_2)\cdot\det(M) \\
+    \end{align*}
+
+    where $\det(M)$ is called the Jacobian.
+\end{theorem}
+
+\subsection{The Joint Distribution of More than Two New Variables}
+
+The case of two new variables can be extended to more than two variables with Jacobian.
+
+\section{Order Statistics}
+
+\begin{definition}
+    The \textbf{order statistics} from a random sample are the rv's $Y_1,\dots,Y_n$ given by 
+
+    \begin{align*}
+        & Y_1 = \text{the smallest among }\{X_i\} \\
+        & \cdots \\
+        & Y_n = \text{the largest among }\{X_i\} \\
+    \end{align*}
+
+    Then we get $Y_1<Y_2<\dots<Y_n$.
+\end{definition}
+
+\subsection{The Distributions of $Y_n$ and $Y_1$}
+
+\begin{proposition}
+    Let $Y_1$ and $Y_n$ denote the smallest and largest order statistics, respectively, based on a random sample from a continuous distribution with cdf $F(x)$ and pdf $f(x)$. Then the cdf and pdf of $Y_n$ are 
+
+    \begin{align*}
+        G_n(y) = [F(Y<y)]^n = [F(y)]^n\quad g_n(y) = n[F(y)]^{n-1}\cdot f(y) \\
+    \end{align*}
+
+    The cdf and pdf of $Y_1$ are 
+
+    \begin{align*}
+        G_1(y) = 1 - [F(Y\geq y)]^n = 1 - [1-F(y)]^n\quad g_1(y) = n[1-F(y)]^{n-1}\cdot f(y) \\
+    \end{align*}
+\end{proposition}
+
+\subsection{The Joint Distribution of the $n$ Order Statistics}
+
+\begin{proposition}
+    Let $g(y_1,\dots,y_n)$ denotes the joint pdf of the order statistics $Y_1,\dots,Y_n$ resulting from a random sample of $X_i$'s from a pdf $f(x)$. Then 
+
+    \begin{align*}
+        g(y_1,\dots,y_n) = \left\{\begin{array}{cl}
+            n!f(y_1)\cdot f(y_2)\cdot \cdots \cdot f(y_n) & y_1<y_2<\cdots<y_n \\
+            0 & \text{otherwise}
+        \end{array}\right.
+    \end{align*}
+\end{proposition}
+
+$n$ independent uniform rv's $(0,B)$ shows that the probability that all values are separated by at least $d$ is 
+
+\begin{align*}
+    & P(\text{all values are separated by more than }d)
+    & \quad = \left\{\begin{array}{cl}
+        [1-(n-1)d/B]^n & 0\leq d\leq B/(n-1) \\
+        0 & d>B/(n-1) \\
+    \end{array}\right.
+\end{align*}
+
+\subsection{The Distribution of a Single Order Statistic}
+
+\begin{proposition}
+    To get the probability distribution of $y_i$ in continuous ordered random sample $\{y_i\}$ alone, we have 
+
+    \begin{align*}
+        g(y_i) & = \int_{y_i}^\infty\cdots\int_{y_{n-1}}^\infty\int_{-\infty}^{y_i}\cdots\int_{-\infty}^{y_2} n!f(y_1)\cdot\cdots\cdot f(y_n) dy_1\cdots dy_{i-1}dy_n\cdots dy_{i+1} \\
+        & = n!\left[\int_{y_i}^\infty\cdots\int_{y_{n-1}}^\infty f(y_{i+1})\cdots f(y_n) dy_n\cdots dy_{i+1}\right]\cdot\left[\int_{-\infty}^{y_i}\cdots\int_{-\infty}^{y_2} f(y_1)\cdots f(y_{i-1}) dy_1\cdots dy_{i-1}\right]\cdot f(y_i) \\
+    \end{align*}
+
+    Thanks to 
+
+    \begin{align*}
+        \begin{array}{ll}
+            \int [F(x)]^kf(x)dx = \frac{1}{k+1}[F(x)]^{k+1}+c & \text{let }u=F(x) \\
+            \int [1-F(x)]^kf(x)dx = -\frac{1}{k+1}[1-F(x)]^{k+1}+c & \text{let }u=1-F(x) \\
+        \end{array}
+    \end{align*}
+
+    we get 
+
+    \begin{align*}
+        g(y_i) = \frac{n!}{(i-1)!\cdot(n-i)!}[F(y_i)]^{i-1}[1-F(y_i)]^{n-i}f(y_i)\quad -\infty<y_i<\infty \\
+    \end{align*}
+\end{proposition}
+
+\subsection{The Joint Distribution of Two Order Statistics}
+
+To get the probability distribution of $Y=\{y_i,y_j\}$, we apply the same method to form three-part continuous integrals ranged from $y_1\sim y_{i}$, $y_{i}\sim y_{j}$, and $y_{j}\sim y_n$.
