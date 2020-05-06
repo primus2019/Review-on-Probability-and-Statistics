@@ -253,3 +253,28 @@ $\chi_{\alpha,\upsilon} = c$ means that $P(\chi_\upsilon^2 > c) = \alpha$(compar
 
 \subsection{The $t$ Distribution}
 
+\begin{theorem}
+    If $X_1,\dots,X_n$ is a random sample from a normal distribution $N(\mu,\sigma^2)$, then variable has the $t$ distribution with $n-1$ df, $t_{n-1}$, is 
+
+    \begin{align*}
+        T=\frac{\bar{X}-\mu}{S/\sqrt{n}}=\frac{Z}{\sqrt{X/\upsilon}} \\
+    \end{align*}
+
+    The pdf of a rv $T$ with $t$ distribution and $\upsilon$ df is 
+
+    \begin{align*}
+        f(t) = \frac{1}{\sqrt{\pi}\upsilon}\frac{\Gamma[(\upsilon+1)/2]}{\Gamma(\upsilon/2)}\frac{1}{(1+t^2/\upsilon)^{(\upsilon+1)/2}}\quad -\infty<t<\infty
+    \end{align*}
+
+    The conclusion can be derived by differentiating the cdf of $t$ distribution.
+\end{theorem}
+
+\subsection{The $F$ Distribution}
+
+\begin{definition}
+    Let $X_1,X_2$ be independent $\chi^2$ rv's with $\upsilon_1$ and $\upsilon_2$ df. The $F$ distribution with $\upsilon_1$ numerator df and $\upsilon_2$ denominator df is 
+
+    \begin{align*}
+        F_{\upsilon_1,\upsilon_2}=\frac{X_1/\upsilon_1}{X_2/\upsilon_2} \\
+    \end{align*}
+\end{definition}
