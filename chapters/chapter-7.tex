@@ -1,0 +1,76 @@
+\chapter{Point Estimation}
+
+Purpose:
+
+\begin{enumerate}
+    \item \textbf{Point estimation} is a guess for the true value of the parameter from a sample.
+    \item Two methods of obtaining point estimation: \textbf{the method of moments} and \textbf{the method of maximum likelihood}
+    \item \textbf{Sufficiency} guarantees no information loss in the chosen statistic.
+\end{enumerate}
+
+\section{General Concepts and Criteria}
+
+\begin{definition}
+    A \textbf{point estimate} of a parameter $\theta$ is a single number that can be regarded as a sensible value for $\theta$. 
+
+    A point estimate is obtained by selecting a suitable statistic and computing its value from the given sample data. 
+
+    The selected statistic is called the \textbf{point estimator} of $\theta$.
+
+    The point estimate resulting from a given sample or the estimator of $\theta$ are both called $\hat{\theta}$.
+\end{definition}
+
+\subsection{Mean Squared Error}
+
+\begin{definition}
+    The \textbf{mean squared error} of an estimator $\hat{\theta}$ is $E[(\hat{\theta} - \theta)^2]$.
+
+    \begin{align*}
+        \text{MSE} = V(\hat{\theta}) + [E(\hat{\theta}) - \theta]^2 = \text{variance of estimator} + (\text{bias})^2 \\
+    \end{align*}
+\end{definition}
+
+\subsection{Unbiased Estimators}
+
+\begin{definition}
+    A point estimator $\hat{\theta}$ has an \textbf{unbiased estimator} of $\theta$ if $E(\hat{\theta})=\theta$ for every possible value of $\theta$. 
+    
+    If $\hat{\theta}$ is not unbiased, the difference $E(\hat{\theta}) - \theta$ is called the \textbf{bias} of $\hat{\theta}$.
+\end{definition}
+
+\begin{proposition}
+    When $X$ is a binomial rv with parameters $n$ and $p$, the sample proposition $\hat{p}=X/n$ is an unbiased estimator of $p$. 
+\end{proposition}
+
+Sample variance $S^2$ is an unbiased estimator of $\sigma^2$.
+
+\subsection{Estimators with Minimum Variance}
+
+\begin{definition}
+    Among all estimators of $\theta$ that are unbiased, choose the one that has minimum variance.
+
+    The resulting $\hat{\theta}$ is called the \textbf{minimum variance unbiased estimator}(MVUE) of $\theta$. 
+
+    Since MSE = variance + $(\text{bias})^2$, seeking an unbiased estimator with minimum variance is the same as seeking an unbiased estimator with minimum MSE.
+\end{definition}
+
+\begin{theorem}
+    Let $X_1,\dots,X_n$ be a random sample from a normal distribution with parameters $\mu$ and $\sigma$. Then the estimator $\hat{\mu} = \bar{X}$ is the MVUE for $\mu$.
+\end{theorem}
+
+When estimating a point of symmetry $\mu$ of a continuous probability distribution, a trimmed mean with trimming proportion 10\% or 20\%(from each end of the sample) produces reasonably bahaved estimates over a very wide range of possible models. Thus, a trimmed mean with small trimming percentage is said to be a \textbf{robust estimator}.
+
+\begin{proposition}
+    Censoring: see textbook Page 343.
+\end{proposition}
+
+\subsection{Reporting a Point Estimate: The Standard Error}
+
+\begin{definition}
+    The \textbf{standard error} of an estimator $\hat{\theta}$ is its standard deviation $\sigma_{\hat{\theta}}=\sqrt{V(\hat{\theta})}$. 
+
+    If the standard error involves unknown parameters, substitution creates the \textbf{estimated standard error}(estimated standard deviation) of the estimator. 
+
+    The estimated standard error can be denoted by either $\hat{\sigma}_{\hat{\theta}}$ or $s_{\hat{\theta}}$.
+\end{definition}
+
