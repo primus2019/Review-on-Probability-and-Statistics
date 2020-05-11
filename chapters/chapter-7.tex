@@ -74,3 +74,126 @@ When estimating a point of symmetry $\mu$ of a continuous probability distributi
     The estimated standard error can be denoted by either $\hat{\sigma}_{\hat{\theta}}$ or $s_{\hat{\theta}}$.
 \end{definition}
 
+\subsection{The Bootstrap}
+
+\textbf{Bootstrap estimate} of $\hat{\theta}$'s standard error equals the sample standard deviation of the $\hat{\theta}_i^*$'s 
+
+\begin{align*}
+    S_{\hat{\theta}} = \sqrt{\frac{1}{B-1}\sum\left(\hat{\theta}_i^* - \bar{\theta^*}\right)^2} \\
+\end{align*}
+
+\section{Methods of Point Estimation}
+
+\subsection{The Method of Moments}
+
+\begin{definition}
+    Let $X_1,\dots,X_n$ be a random sample from a pmf or pdf $f(x)$. 
+    
+    For $k=1,2,3,\dots$, the \textbf{$k$th population moment}, or the \textbf{$k$th moment of the distribution} $f(x)$, is $E(X^k)$. 
+    
+    The \textbf{$k$th sample moment} is $\frac{1}{n}\sum_{i=1}^n X_i^k$.
+\end{definition}
+
+\begin{definition}
+    Let $X_1,\dots,X_n$ be a random sample from a distribution with pmf or pdf $f(x;\theta_1,\dots,\theta_m)$, where $\theta_1,\dots,\theta_m$ are parameters whose values are unknown. 
+
+    Then the \textbf{moment estimators} $\theta_1,\dots,\theta_m$ are obtained by the first $m$ sample moments to the corresponding first $m$ population moments and solving for $\theta_1,\dots,\theta_m$.
+
+    e.g., $E(X) = \frac{1}{n}\sum X_i = \bar{X}, E(X^2) = \frac{1}{n}\sum X_i^2$
+\end{definition}
+
+\subsection{Maximum Likelihood Estimation}
+
+\begin{definition}
+    Let $X_1,\dots,X_n$ have joint pmf or pdf $f(x_1,\dots,x_n;\theta_1,\dots,\theta_m)$ where parameters $\theta_1,\dots,\theta_m$ have unknown values. 
+
+    When $x_1,\dots,x_n$ are the observed sample values and $f$ is regarded as a function of $\theta_1,\dots,\theta_m$, it is called the \textbf{likelihood function}. 
+
+    The maximum likelihood estimates $\hat{\theta}_1,\dots,\hat{\theta}_m$ are those  values of the $\theta_i$'s that maximize the likelihood function, so that $f(x_1,\dots,x_n;\hat{\theta}_1,\dots,\hat{\theta}_m)\geq f(x_1,\dots,x_n;\theta_1,\dots,\theta_m)$ for all $\theta_1,\dots,\theta_m$.
+
+    When the $X_i$'s are substituted in place of the $x_i$'s, the \textbf{maximum likelihood estimators} result.
+\end{definition}
+
+\subsection{Some Properties of MLEs}
+
+\begin{proposition}
+    The Invariance Principle
+
+    Let $\hat{\theta}_1,\dots,\hat{\theta}_m$ be the mle's of the parameters $\theta_1,\dots,\theta_m$. Then the mle of any function $h(\theta_1,\dots,\theta_m)$ of these parameters is the functuion $h(\hat{\theta}_1,\dots,\hat{\theta}_m)$, of the mle's. 
+
+    Intuitively, the principle extends the MLE of parameter$\theta$ to MLE of function$h(\theta)$.
+\end{proposition}
+
+\subsection{Large-Sample Behavior of the MLE}
+
+\begin{proposition}
+    Under very general conditions on the joint distribution of the sample, when the sample size is large, the maximum likelihood estimator of any parameter $\theta$ is close to $\theta$(cosistency), is approximately unbiased $[E(\hat{\theta})\approx \theta]$, and has variance that is nearly as small as can be achieved by any unbiased estimator. Stated another way, the mle $\hat{\theta}$ is approximately the MVUE of $\theta$.
+\end{proposition}
+
+\section{Sufficiency}
+
+\begin{definition}
+    A statistic $T = t(X_1,\dots,X_n)$ is said to be \textbf{sufficient} for making inferences about a parameter $\theta$ if the joint distribution of $X_1,\dots,X_n$ given that $T=t$ does not depend upon $\theta$ for every possible value $t$ of the statistic $T$.
+\end{definition}
+
+\subsection{The Factorization Theorem}
+
+\begin{theorem}{THE NEYMAN FACTORIZATION Theorem}
+    See textbook Page 376.
+\end{theorem}
+
+\section{Information and Efficiency}
+
+\begin{definition}
+    The \textbf{Fisher information} $I(\theta)$ in a single observation from a pmf or pdf $f(x;\theta)$ is the variance of the random variable $U=\frac{\partial}{\partial\theta}\ln[f(X;\theta)]$: 
+
+    \begin{align*}
+        I(\theta) = V\left[\frac{\partial}{\partial\theta}\ln(f(X;\theta))\right] \\
+    \end{align*}
+
+    \begin{proof}
+        \begin{align*}
+            1 & = \sum_xf(x;\theta) \\
+            0 & = \frac{\partial}{\partial\theta}\sum_xf(x;\theta) = \sum_x\frac{\partial}{\partial\theta}f(x;\theta) \\
+            & = \sum_x\frac{\partial}{\partial\theta}[\ln f(x;\theta)]f(x;\theta) = E\left[\frac{\partial}{\partial\theta}\ln(f(X;\theta))\right]=E(U) \\
+            I(\theta) & = -E\left[\frac{\partial^2}{\partial\theta^2}\ln(f(X;\theta))\right] \\
+        \end{align*}
+    \end{proof}
+\end{definition}
+
+\subsection{Information in a Random Sample}
+
+\textbf{score function}
+
+\begin{align*}
+    \frac{\partial}{\partial\theta}\ln f(X_1,\dots,X_n;\theta) & = \frac{\partial}{\partial\theta}\ln[f(X_1;\theta)\cdot \cdots \cdot f(X_n;\theta)] \\
+    & = \frac{\partial}{\partial\theta}\ln f(X_1;\theta) + \cdots + \frac{\partial}{\partial\theta}\ln f(X_n;\theta) \\
+\end{align*}
+
+\begin{align*}
+    E\left[\frac{\partial}{\partial\theta}\ln f(X_1,\dots,X_n;\theta)\right] = 0 \\
+\end{align*}
+
+\begin{align*}
+    I_n(\theta) = V\left[\frac{\partial}{\partial\theta}\ln f(X_1,\dots,X_n;\theta)\right] = nV\left[\frac{\partial}{\partial\theta}\ln f(X_1;\theta)\right]=nI(\theta) \\
+\end{align*}
+
+\subsection{The Cramer-Rao Inequality}
+
+\begin{theorem}
+    Assume a random sample $X_1,\dots,X_n$ from the distribution with pmf or pdf $f(x;\theta)$ such that the set of possible values does not depend on $\theta$. If the statistic $T=t(X_1,\dots,X_n)$ is an unbiased estimator for the paramter $\theta$, then 
+
+    \begin{align*}
+        V(T) \geq \frac{1}{V\left\{\frac{\partial}{\partial\theta}[\ln f(X_1,\dots,X_n;\theta)]\right\}} = \frac{1}{nI(\theta)} = \frac{1}{I_n(\theta)} \\
+    \end{align*}
+\end{theorem}
+
+\begin{definition}
+    Let $T$ be an unbiased estimator of $\theta$. The ratio of the lower bound to the variance of $T$ is its efficiency. Then $T$ is said to be an efficient esitimator if $T$ achieves the Cramer-Rao lower bound(the efficiency is 1). An efficient esitmator is a minimum variance unbiased(MVUE) estimator.
+\end{definition}
+
+\subsection{Large Sample Properties of the MLE}
+
+\begin{theorem}
+    Given a random sample $X_1,\dots,X_n$ from a distribution with pmf or pdf $f(x;\theta)$, assume that the set of possible $x$ values does not depend on $\theta$. Then for large $n$ the maximum likelihood estimator $\hat{\theta}$ has approximately a normal distribution with mean $\theta$ and variance $\frac{1}{nI(\theta)}$. More precisely, the limiting distribution of $\sqrt{n}(\hat{\theta}-\theta)$ is normal with mean 0 and variance $\frac{1}{I(\theta)}$.
+\end{theorem}
